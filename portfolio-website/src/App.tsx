@@ -22,12 +22,14 @@ function App() {
         <section className="snap-start min-h-[calc(100vh-4rem)]">
           <Projects />
         </section>
-        <section className="snap-start min-h-[calc(100vh-4rem)]">
-          <Contact />
+        <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col">
+          <div className="grow">
+            <Contact />
+          </div>
+          <Footer />
         </section>
       </main>
 
-      <Footer />
 
     </div>
   )

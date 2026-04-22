@@ -3,3 +3,22 @@
 * {
   font-family: "Geist", sans-serif;
 }
+
+/* Personalización de la scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+  background: #020617; /* El color de tu bg-slate-900 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6; /* El color de tu blue-500 (o blue-600) */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 2px solid #020617; /* Esto crea el efecto de "dentro de la página" */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb; /* Un azul un poco más oscuro al pasar el ratón */
+}
