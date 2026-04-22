@@ -8,26 +8,18 @@ import Footer from "./components/Footer"
 function App() {
 
   return (
-    <div className="bg-slate-900 min-h-screen text-white h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+    <div className="bg-slate-900 min-h-screen text-white h-screen">
       <Navbar />
 
       <main>
-        <section className="snap-start min-h-[calc(100vh-4rem)]">
-          <Hero />
-        </section>
+        <Hero />
 
-        <section className="snap-start min-h-[calc(100vh-4rem)]">
-          <About />
-        </section>
-        <section className="snap-start min-h-[calc(100vh-4rem)]">
-          <Projects />
-        </section>
-        <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col">
-          <div className="grow">
-            <Contact />
-          </div>
-          <Footer />
-        </section>
+        <About />
+        <Projects />
+        <div className="grow bg-slate-900">
+          <Contact />
+        </div>
+        <Footer />
       </main>
 
 

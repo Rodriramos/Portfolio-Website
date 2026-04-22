@@ -2,8 +2,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24 text-slate-200">
-      <div className="max-w-3xl">
+    <section id="about" className="mx-auto px-4 sm:px-6 py-10 sm:py-15 text-slate-200 bg-slate-900">
+      <div className="max-w-6xl mx-auto">
 
         {/* Etiqueta */}
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-400 mb-4 sm:mb-6">

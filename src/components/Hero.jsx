@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 py-20 bg-slate-950 text-white">
+    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 py-16 bg-linear-to-b from-slate-950 to-slate-900 text-white">
       <div className="w-full max-w-3xl">
 
         {/* Tarjeta de perfil */}
