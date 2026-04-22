@@ -1,45 +1,45 @@
 const projects = [
 	{
 		title: 'Desarrollo full-stack de una aplicación web para la gestión de alquileres de vehículos',
-		description: 'Este proyecto es un sistema completo de gestión de alquileres de vehículos. Incluye un frontend para que los usuarios puedan buscar y reservar vehículos, otra interfaz para la administración, y un backend que maneja la lógica de negocio, la autenticación y la gestión de datos. Además, se desarrolló una ETL que permite cargar todos los vehículos matriculados en España entre 2014 y 2024, lo que añade un valor significativo al proyecto al proporcionar una base de datos realista y actualizada.',
+		description: 'Sistema completo de gestión de alquileres de vehículos. Incluye un frontend para buscar y reservar vehículos, una interfaz de administración, y un backend que maneja la lógica de negocio, autenticación y gestión de datos. Además, se desarrolló una ETL que permite cargar todos los vehículos matriculados en España entre 2014 y 2024.',
 		github: 'https://github.com/Rodriramos/Rent-a-car.git',
 		tech: ['.NET', 'React', 'Angular', 'Tailwindcss', 'MongoDB', 'PostgreSQL', 'MySQL', 'Docker', 'Swagger', 'Postman']
 	},
 	{
-		title: 'Herramienta interactiva basada en ontologías, para la creación de modelos de tecnologías sanitarias',
-		description: 'Este proyecto permite crear modelos de enfermedades para su evaluación económica basados en ontologías. Para ello se dispuso de un backend que es el encargado de cargar, modificar y exportar las ontologías que se van creando. Por otra parte, se desarrolló un frontend destinado a que cualquier usuario sin conocimientos sobre la manipulación de ontologías pueda crear sus propios modelos de enfermedades, y exportarlos en formato OWL para su posterior uso en herramientas de evaluación económica.',
+		title: 'Herramienta interactiva basada en ontologías para la creación de modelos de tecnologías sanitarias',
+		description: 'Permite crear modelos de enfermedades para su evaluación económica basados en ontologías. Backend encargado de cargar, modificar y exportar ontologías. Frontend destinado a usuarios sin conocimientos técnicos para crear modelos y exportarlos en formato OWL.',
 		github: 'https://github.com/Rodriramos/Disease-Models-Ontology-Based.git',
 		tech: ['Python', 'FastAPI', 'owlready2', 'React', 'Tailwindcss', 'React Flow']
 	},
-]
+];
 
 const Projects = () => {
 	return (
-		<section id="projects" className="mx-auto max-w-6xl px-6 py-24">
-			<div className="mb-12 max-w-2xl">
+		<section id="projects" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24">
+			<div className="mb-8 sm:mb-12 max-w-2xl">
 				<p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">Mis proyectos</p>
-				<h2 className="text-3xl font-bold text-white md:text-4xl">Proyectos de desarrollo</h2>
+				<h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Proyectos de desarrollo</h2>
 			</div>
 
-			{/* Grid de 2 columnas para proyectos grandes */}
-			<div className="grid gap-8 md:grid-cols-2">
+			<div className="grid gap-5 sm:gap-8 grid-cols-1 md:grid-cols-2">
 				{projects.map((project) => (
 					<a
 						key={project.title}
 						href={project.github}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="group block rounded-2xl border border-slate-800 bg-slate-900 p-8 transition-all duration-300 hover:border-blue-500/50 hover:bg-slate-800/50 hover:-translate-y-2"
+						className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-8 transition-all duration-300 hover:border-blue-500/50 hover:bg-slate-800/50 hover:-translate-y-1 sm:hover:-translate-y-2"
 					>
-						<h3 className="mb-4 text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-							{project.title} <span className="text-sm font-normal text-slate-400">[GitHub]</span>
+						<h3 className="mb-3 sm:mb-4 text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+							{project.title}{' '}
+							<span className="text-xs sm:text-sm font-normal text-slate-400">[GitHub]</span>
 						</h3>
-						<p className="mb-6 leading-8 text-slate-400">{project.description}</p>
-
-						{/* Tags de tecnologías */}
-						<div className="flex flex-wrap gap-2">
+						<p className="mb-5 sm:mb-6 text-sm sm:text-base leading-7 text-slate-400 grow">
+							{project.description}
+						</p>
+						<div className="flex flex-wrap gap-1.5 sm:gap-2">
 							{project.tech.map((t) => (
-								<span key={t} className="text-xs font-medium text-blue-300 bg-blue-950/30 px-3 py-1 rounded-full">
+								<span key={t} className="text-xs font-medium text-blue-300 bg-blue-950/30 px-2.5 py-1 rounded-full">
 									{t}
 								</span>
 							))}
@@ -48,7 +48,7 @@ const Projects = () => {
 				))}
 			</div>
 		</section>
-	)
-}
+	);
+};
 
-export default Projects
+export default Projects;
