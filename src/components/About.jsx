@@ -1,102 +1,124 @@
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React from 'react';
+import { User, GraduationCap, Code2, Sparkles, CalendarDays } from "lucide-react";
 
 const About = () => {
-	const formRef = useRef();
-	const [status, setStatus] = useState(null);
+  return (
+    <section id="about" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-15 sm:pb-20 text-slate-200">
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setStatus('sending');
+      <div className="max-w-6xl mx-auto space-y-10">
+        {/* Encabezado de Sección */}
+        <div className="flex items-center gap-3">
+          <User className="relative w-8 h-8 text-blue-400 shrink-0" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Sobre mí</h2>
+        </div>
 
-		emailjs.sendForm('service_9a0v8mj', 'template_9ii9bqj', formRef.current, 'BkHr3GVbshUi_zkCg')
-			.then(() => {
-				setStatus('success');
-				formRef.current.reset();
-			})
-			.catch(() => setStatus('error'));
-	};
+        {/* Disposición en 2 Columnas Simétricas (50% / 50% de ancho) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch w-full">
 
-	return (
-		<section id="about" className="mx-auto px-4 sm:px-6 py-10 sm:py-16 text-slate-200">
-			<div className="rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900 p-6 sm:p-8 md:p-12 max-w-6xl mx-auto">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+          {/* Columna Izquierda: Perfil Profesional */}
+          <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md p-8 sm:p-10 shadow-xl flex flex-col justify-between h-full">
+            <div>
+              <div className="space-y-6 text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  Desde pequeño siempre me ha llamado la atención la informática, especialmente la posibilidad de
+                  <strong className="font-medium text-blue-400"> trastear y encontrar soluciones</strong> a problemas que, a primera vista, parecían difíciles de resolver. Con el tiempo, esa curiosidad se convirtió en una pasión por la programación y por entender cómo funcionan las cosas para poder construir mis propias soluciones.
+                </p>
 
-					{/* Lado izquierdo */}
-					<div>
-						<p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-blue-400">Contacto</p>
-						<h2 className="mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug">
-							¿Quieres hablar?
-						</h2>
-						<p className="text-base sm:text-lg leading-7 sm:leading-8 text-slate-400 mb-6 sm:mb-8">
-							Estoy abierto a nuevos retos y oportunidades. Puedes escribirme por aquí o conectar conmigo en mis perfiles profesionales.
-						</p>
+                <p>
+                  Actualmente, acabo de <strong className="font-medium text-blue-400">finalizar mi carrera</strong> y estoy dando mis primeros pasos profesionales en este amplio mundo, con muchas ganas de seguir aprendiendo,
+                  <strong className="font-medium text-blue-400"> afrontar nuevos retos</strong> y convertir cada proyecto en una oportunidad para mejorar.
+                </p>
 
-						<div className="flex flex-col gap-3 sm:gap-4">
-							<a
-								href="https://www.linkedin.com/in/rodrigoramosh"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
-							>
-								<img src="/linkedin_logo.png" alt="LinkedIn" className="w-5 h-5 sm:w-6 sm:h-6" />
-								LinkedIn
-							</a>
-							<a
-								href="https://github.com/Rodriramos"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="flex items-center gap-3 text-slate-300 hover:text-white transition-colors"
-							>
-								<img src="/github_logo.png" alt="GitHub" className="w-5 h-5 sm:w-6 sm:h-6" />
-								GitHub
-							</a>
-						</div>
-					</div>
+                <p>
+                  Mi objetivo es seguir creciendo como profesional, explorar todas las posibilidades que ofrece la tecnología y, sobre todo, seguir
+                  <strong className="font-medium text-blue-400"> construyendo, aprendiendo y resolviendo problemas mediante el código</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
 
-					{/* Formulario */}
-					<form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
-						<input
-							name="from_name"
-							type="text"
-							placeholder="Tu nombre"
-							required
-							className="rounded-lg bg-slate-800/50 border border-slate-700 px-4 py-2.5 sm:py-3 text-sm sm:text-base focus:border-blue-500 focus:outline-none transition-all"
-						/>
-						<input
-							name="from_email"
-							type="email"
-							placeholder="Tu correo"
-							required
-							className="rounded-lg bg-slate-800/50 border border-slate-700 px-4 py-2.5 sm:py-3 text-sm sm:text-base focus:border-blue-500 focus:outline-none transition-all"
-						/>
-						<textarea
-							name="message"
-							placeholder="Tu mensaje"
-							rows={4}
-							required
-							className="rounded-lg bg-slate-800/50 border border-slate-700 px-4 py-2.5 sm:py-3 text-sm sm:text-base focus:border-blue-500 focus:outline-none resize-none transition-all"
-						/>
-						<button
-							type="submit"
-							disabled={status === 'sending'}
-							className="rounded-lg bg-blue-600 px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-white hover:bg-blue-700 transition-all disabled:opacity-50"
-						>
-							{status === 'sending' ? 'Enviando...' : 'Enviar mensaje'}
-						</button>
+          {/* Columna Derecha: Formación Académica (2 Tarjetas Independientes) */}
+          <div className="flex flex-col gap-6 h-full justify-between">
 
-						{status === 'success' && (
-							<p className="text-green-400 text-sm animate-pulse">¡Mensaje enviado con éxito!</p>
-						)}
-						{status === 'error' && (
-							<p className="text-red-400 text-sm">Hubo un error. Intenta de nuevo.</p>
-						)}
-					</form>
+            {/* Tarjeta 1: Máster (Actual) */}
+            <div className="flex-1 group relative rounded-2xl border border-blue-500/30 bg-slate-900/60 backdrop-blur-md p-6 flex flex-col justify-between shadow-lg shadow-blue-500/5 transition-all duration-300 hover:border-blue-500/50">
 
-				</div>
-			</div>
-		</section>
-	);
+              {/* Badge "En Curso" Neón */}
+              <span className="absolute -top-2.5 -right-2.5 inline-flex items-center gap-1.5 rounded-full border border-blue-400/30 bg-blue-950 px-3 py-1 text-xs font-medium text-blue-300 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400" />
+                </span>
+                En curso
+              </span>
+
+              <div>
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-400">Estudios de Posgrado</span>
+                </div>
+
+                <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition-colors leading-snug">
+                  Máster en Desarrollo de Software
+                </h4>
+                <p className="text-sm text-blue-400 font-medium mt-1">
+                  Universidad de Granada
+                </p>
+                <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                  Modalidad telemática
+                </p>
+              </div>
+
+              {/* Pie de tarjeta */}
+              <div className="mt-4 pt-4 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-400 font-medium">
+                <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+                <span>Especialización profesional</span>
+              </div>
+            </div>
+
+            {/* Tarjeta 2: Grado (Finalizado) */}
+            <div className="flex-1 group rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md p-6 flex flex-col justify-between shadow-xl transition-all duration-300 hover:border-slate-700">
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-3">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-lg bg-slate-500/10 border border-slate-500/20 flex items-center justify-center text-slate-400 shrink-0">
+                      <GraduationCap className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Estudios Finalizados</span>
+                  </div>
+
+                  <span className="flex items-center gap-1.5 text-xs text-slate-500 font-mono bg-slate-800/50 px-2.5 py-1 rounded-full border border-slate-700/50 shrink-0">
+                    <CalendarDays className="w-3.5 h-3.5 text-slate-600" />
+                    2021 - 2026
+                  </span>
+                </div>
+
+                <h4 className="text-base sm:text-lg font-bold text-white transition-colors leading-snug">
+                  Grado en Ingeniería Informática
+                </h4>
+                <p className="text-sm text-slate-300 font-medium mt-1">
+                  Universidad de La Laguna
+                </p>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Mención en Tecnologías de la Información
+                </p>
+              </div>
+
+              {/* Pie de tarjeta */}
+              <div className="mt-4 pt-4 border-t border-slate-800/60 flex items-center gap-2 text-xs text-slate-500">
+                <Code2 className="w-4 h-4 text-slate-400 shrink-0" />
+                <span>Titulación universitaria oficial</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
 };
 
 export default About;

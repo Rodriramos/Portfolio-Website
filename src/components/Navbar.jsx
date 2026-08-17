@@ -2,9 +2,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const LINKS = [
   { id: "home", label: "Inicio" },
+  { id: "about", label: "Sobre mí" },
   { id: "experience", label: "Experiencia" },
   { id: "projects", label: "Proyectos" },
-  { id: "about", label: "Sobre mí" },
+  { id: "tech-stack", label: "Stack Tecnológico" }
 ];
 
 const Navbar = () => {

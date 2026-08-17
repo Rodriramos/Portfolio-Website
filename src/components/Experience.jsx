@@ -29,13 +29,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-10 bg-slate-950 text-slate-200">
-      {/* Fondo sutil */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(99,102,241,0.08),rgba(255,255,255,0))]" />
-        <div className="absolute top-0 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[130px]" />
-        <div className="absolute bottom-0 -right-32 w-96 h-96 bg-indigo-600/10 rounded-full blur-[130px]" />
-      </div>
+    <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-10 text-slate-200">
 
       <div className="max-w-6xl mx-auto">
         <div className="max-w-4xl">

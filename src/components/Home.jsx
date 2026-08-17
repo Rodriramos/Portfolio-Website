@@ -4,63 +4,22 @@ const Home = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden flex items-center px-4 sm:px-6 pt-28 pb-10 bg-slate-950 text-white selection:bg-blue-500 selection:text-white"
+      className="relative flex items-center px-4 sm:px-6 pt-28 pb-10 text-white selection:bg-blue-500 selection:text-white"
     >
-      {/* ---------- Fondo Dinámico y Neón ---------- */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Base Gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]" />
-
-        {/* Spotlights interactivos / Luces ambientales intensas */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-blue-600/20 rounded-full blur-[140px] pointer-events-none animate-pulse-slow" />
-        <div className="absolute top-1/3 -right-20 w-112.5 h-112.5 bg-indigo-500/20 rounded-full blur-[130px] pointer-events-none animate-blob-a" />
-        <div className="absolute -bottom-20 -left-20 w-125 h-125 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none animate-blob-b" />
-
-        {/* Grid de ingeniería con degradado viñeta */}
-        <div
-          className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-size-4rem_4rem mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"
-        />
-
-        {/* Partículas / Estrellas brillantes */}
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage:
-              "radial-gradient(1.5px 1.5px at 20px 30px, #60a5fa 100%, transparent), radial-gradient(2px 2px at 150px 120px, #818cf8 100%, transparent), radial-gradient(1.5px 1.5px at 280px 70px, #38bdf8 100%, transparent), radial-gradient(2px 2px at 400px 200px, #818cf8 100%, transparent)",
-            backgroundSize: "450px 260px",
-            backgroundRepeat: "repeat",
-          }}
-        />
-
-        <style>{`
-          @keyframes blobA {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, 50px) scale(1.15); }
+      {/* Estilos locales para las animaciones del perfil y las tarjetas flotantes */}
+      <style>{`
+        @keyframes floatChip {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-float-chip { animation: floatChip 4s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin 16s linear infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-float-chip, .animate-spin-slow {
+            animation: none;
           }
-          @keyframes blobB {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -40px) scale(1.1); }
-          }
-          @keyframes pulseSlow {
-            0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.08); }
-          }
-          @keyframes floatChip {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
-          .animate-blob-a { animation: blobA 12s ease-in-out infinite; }
-          .animate-blob-b { animation: blobB 15s ease-in-out infinite; }
-          .animate-pulse-slow { animation: pulseSlow 8s ease-in-out infinite; }
-          .animate-float-chip { animation: floatChip 4s ease-in-out infinite; }
-          .animate-spin-slow { animation: spin 16s linear infinite; }
-          @media (prefers-reduced-motion: reduce) {
-            .animate-blob-a, .animate-blob-b, .animate-pulse-slow, .animate-float-chip, .animate-spin-slow {
-              animation: none;
-            }
-          }
-        `}</style>
-      </div>
+        }
+      `}</style>
 
       {/* ---------- Contenido principal ---------- */}
       <div className="w-full max-w-6xl mx-auto grid md:grid-cols-12 items-center gap-8 md:gap-12 z-10">
@@ -72,14 +31,14 @@ const Home = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
             </span>
-            Disponible para trabajar
+            Disponible para nuevos retos
           </span>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
             <span className="block text-white mb-2">
               Hola, soy Rodrigo Ramos
             </span>
-            <span className="bg-linear-to-r from-blue-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">
               Desarrollador Full-Stack &amp; Software Engineer
             </span>
           </h1>
@@ -94,7 +53,7 @@ const Home = () => {
             nuevas tecnologías y crear soluciones a problemas reales.
           </p>
 
-          {/* Ubicación actual y Redes Sociales agrupados al lado */}
+          {/* Ubicación actual y Redes Sociales */}
           <div className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm text-slate-400">
             {/* Badge de Ubicación */}
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800/80 text-slate-300 backdrop-blur-sm shadow-sm">
@@ -140,7 +99,7 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Columna derecha: foto */}
+        {/* Columna derecha: foto y badges flotantes */}
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
 
@@ -156,7 +115,7 @@ const Home = () => {
             />
 
             {/* Resplandor trasero */}
-            <div className="absolute -inset-4 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 opacity-30 blur-xl" />
+            <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 opacity-30 blur-xl" />
 
             {/* Foto de perfil */}
             <img
@@ -190,7 +149,7 @@ const Home = () => {
               </svg>
             </div>
 
-            {/* Floating Badge: TFG */}
+            {/* Floating Badge: Estado actual */}
             <div className="absolute -bottom-3 -right-2 sm:-right-4 flex items-center gap-3 rounded-2xl border border-slate-700/80 bg-slate-900/90 backdrop-blur-md px-3.5 py-2.5 shadow-2xl">
               <div className="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xs font-bold shrink-0">
                 🚀

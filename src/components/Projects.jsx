@@ -27,14 +27,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-10 sm:pb-28 bg-slate-950 text-slate-200">
-
-      {/* Fondo Neón / Ambiental */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(99,102,241,0.08),rgba(255,255,255,0))]" />
-        <div className="absolute top-1/2 -right-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-0 -left-32 w-96 h-96 bg-indigo-600/10 rounded-full blur-[130px] pointer-events-none" />
-      </div>
+    <section id="projects" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-10 sm:pb-18 text-slate-200">
 
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 sm:mb-12">
@@ -84,7 +77,7 @@ const Projects = () => {
                 {/* Tecnologías */}
                 <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
                   {project.tech.map((t) => (
-                    <span key={t} className="text-xs font-mono px-3 py-1 rounded-lg bg-blue-400/30 border border-blue-400/30 text-blue-300">
+                    <span key={t} className="text-xs font-mono px-3 py-1 rounded-lg bg-blue-400/20 border border-blue-400/30 text-blue-300">
                       {t}
                     </span>
                   ))}

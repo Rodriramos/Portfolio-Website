@@ -2,23 +2,25 @@
 
 * {
   font-family: "Geist", sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #020617;
 }
 
-/* Personalización de la scrollbar */
+/* Estilos para Chrome, Edge, Safari (Webkit) */
 ::-webkit-scrollbar {
-  width: 10px; /* Ancho de la barra */
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617; /* El color de tu bg-slate-900 */
+  background: #020617; /* Coincide exactamente con tu bg-slate-950 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6; /* El color de tu blue-500 (o blue-600) */
-  border-radius: 5px; /* Bordes redondeados */
-  border: 2px solid #020617; /* Esto crea el efecto de "dentro de la página" */
+  background: #3b82f6; /* blue-500 de Tailwind */
+  border-radius: 9999px; /* Totalmente redondeado (pill style) */
+  border: 2px solid #020617; /* Separa el thumb del borde dando efecto flotante */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb; /* Un azul un poco más oscuro al pasar el ratón */
+  background: #60a5fa; /* blue-400 (más brillante al pasar el ratón) */
 }
