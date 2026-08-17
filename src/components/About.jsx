@@ -1,53 +1,100 @@
 import React from 'react';
 
-const About = () => {
+const Experience = () => {
+  const experiences = [
+    {
+      role: 'Profesor Particular de Informática',
+      company: 'Autónomo · Remoto',
+      period: 'Junio 2023 - Presente',
+      current: true,
+      description: [
+        'Imparto clases individuales a estudiantes universitarios de **Ingeniería Informática**.',
+        'Refuerzo fundamentos de **programación, algoritmos y estructuras de datos**.',
+        'Traduzco conceptos teóricos complejos en ejercicios prácticos y proyectos reales.'
+      ]
+    },
+    {
+      role: 'Prácticas como Desarrollador de Software',
+      company: 'TecAlliance',
+      period: 'Octubre 2025 - Diciembre 2025',
+      current: false,
+      description: [
+        'Desarrollé una **aplicación Full-Stack para la gestión y alquiler de vehículos**, creando soluciones diferenciadas para usuarios y administradores.',
+        'Diseñé y desarrollé una **ETL** para extraer, transformar y almacenar datos de vehículos matriculados en España entre 2014 y 2024.',
+        'Desarrollé una **API REST** para centralizar el acceso a los datos y conectar los servicios backend con las aplicaciones frontend.',
+        'Implementé interfaces con React para la gestión administrativa y Angular para la aplicación orientada al usuario.'
+      ]
+    }
+  ];
+
   return (
-    <section id="about" className="mx-auto px-4 sm:px-6 py-10 sm:py-15 text-slate-200 bg-slate-900">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-28 bg-slate-950 text-slate-200">
+      {/* Fondo sutil */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(99,102,241,0.08),rgba(255,255,255,0))]" />
+        <div className="absolute top-0 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 -right-32 w-96 h-96 bg-indigo-600/10 rounded-full blur-[130px]" />
+      </div>
 
-        {/* Etiqueta */}
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-400 mb-4 sm:mb-6">
-          Sobre mí
-        </p>
+      <div className="max-w-4xl mx-auto">
 
-        {/* Título */}
-        <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug">
-          Ingeniero Informático en constante evolución.
-        </h2>
-
-        {/* Contenido */}
-        <div className="space-y-5 text-base sm:text-lg leading-7 sm:leading-8 text-slate-400">
-          <p>
-            Recién graduado en Ingeniería Informática, mi objetivo es transformar problemas complejos en soluciones tecnológicas elegantes.
-            Creo firmemente que la mejor ingeniería es aquella que es invisible para el usuario pero impecable en su arquitectura.
-          </p>
-          <p>
-            Actualmente, mi foco está en expandir mis capacidades hacia el ecosistema{' '}
-            <strong className="text-white">Full Stack</strong>, buscando conectar la eficiencia del frontend con la potencia del backend.
-            Paralelamente, me apasiona la <strong className="text-white">Ciencia de Datos</strong>,
-            un área donde disfruto analizando patrones para tomar decisiones basadas en información real.
-          </p>
-          <p>
-            Más allá del código, soy una persona curiosa que disfruta de los retos técnicos. Estoy en esa etapa de mi carrera donde
-            cada línea de código es una oportunidad para aprender algo nuevo y mejorar mi metodología de trabajo.
-          </p>
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+            Experiencia Profesional
+          </h2>
         </div>
 
-        {/* Stack tecnológico */}
-        <div className="mt-8 sm:mt-10">
-          <h4 className="text-xs sm:text-sm font-semibold text-slate-200 mb-3 sm:mb-4 uppercase tracking-wider">
-            Stack tecnológico actual:
-          </h4>
-          <div className="flex flex-wrap gap-x-3 gap-y-2 sm:gap-x-5 sm:gap-y-3">
-            {['C++', 'Python', 'JavaScript', 'React', 'Tailwindcss', 'MySQL', 'PostgreSQL', 'MongoDB', 'Docker', 'Power BI', 'Git', 'GitHub'].map((tech) => (
-              <span
-                key={tech}
-                className="px-2.5 py-1 sm:px-3 bg-slate-800 border border-slate-700 rounded-md text-xs sm:text-sm text-blue-300"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+        {/* Timeline Container */}
+        <div className="relative pl-6 sm:pl-8 border-l border-slate-800/80 space-y-10">
+
+          {experiences.map((exp, idx) => (
+            <div key={idx} className="relative group">
+
+              {/* Timeline Indicator Dot */}
+              <div className="absolute left-7.75 sm:-left-9.75 top-1.5 flex items-center justify-center">
+                {exp.current ? (
+                  <span className="relative flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                    <span className="relative inline-flex h-4 w-4 rounded-full bg-blue-500 border-2 border-slate-950 shadow-[0_0_12px_rgba(59,130,246,0.8)]" />
+                  </span>
+                ) : (
+                  <span className="h-3.5 w-3.5 rounded-full bg-slate-700 border-2 border-slate-950 group-hover:bg-blue-400 transition-colors" />
+                )}
+              </div>
+
+              {/* Card de Experiencia */}
+              <div className="p-6 sm:p-7 rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5">
+
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                      {exp.role}
+                    </h3>
+                    <p className="text-sm font-semibold text-blue-400 mt-0.5">
+                      {exp.company}
+                    </p>
+                  </div>
+                  <span className="inline-block text-xs font-mono text-slate-400 bg-slate-800/60 border border-slate-700/50 px-3 py-1 rounded-full w-fit">
+                    {exp.period}
+                  </span>
+                </div>
+
+                {/* Bullet Points */}
+                <ul className="space-y-2 mb-5 text-sm sm:text-base text-slate-300/90 leading-relaxed">
+                  {exp.description.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="text-blue-400 mt-1.5 text-xs">▹</span>
+                      <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-medium">$1</strong>') }} />
+                    </li>
+                  ))}
+                </ul>
+
+              </div>
+
+            </div>
+          ))}
+
         </div>
 
       </div>
@@ -55,4 +102,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Experience;

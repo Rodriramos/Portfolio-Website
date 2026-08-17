@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 const LINKS = [
   { id: "home", label: "Inicio" },
-  { id: "about", label: "Sobre mí" },
+  { id: "about", label: "Experiencia" },
   { id: "projects", label: "Proyectos" },
   { id: "contact", label: "Contacto" },
 ];

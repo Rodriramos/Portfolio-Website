@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden flex items-center px-4 sm:px-6 pt-28 pb-16 bg-slate-950 text-white selection:bg-blue-500 selection:text-white"
+      className="relative overflow-hidden flex items-center px-4 sm:px-6 pt-28 pb-10 bg-slate-950 text-white selection:bg-blue-500 selection:text-white"
     >
       {/* ---------- Fondo Dinámico y Neón ---------- */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
