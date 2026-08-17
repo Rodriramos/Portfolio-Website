@@ -1,72 +1,131 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
+
+const LINKS = [
+  { id: "home", label: "Inicio" },
+  { id: "about", label: "Sobre mí" },
+  { id: "projects", label: "Proyectos" },
+  { id: "contact", label: "Contacto" },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("home");
+  const linkRefs = useRef({});
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
+
+  // Mide la posición del link activo para mover el indicador
+  const moveIndicator = useCallback((id) => {
+    const el = linkRefs.current[id];
+    if (el) {
+      setIndicator({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 });
+    }
+  }, []);
+
+  useEffect(() => {
+    moveIndicator(active);
+  }, [active, moveIndicator]);
+
+  // Detecta qué sección está en pantalla
+  useEffect(() => {
+    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(Boolean);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleClick = (id) => {
+    setActive(id);
+    setMenuOpen(false);
+  };
 
   return (
-    <header className="h-16 sticky top-0 z-50 border-b border-slate-800/70 bg-slate-950/90 backdrop-blur">
-      <nav className="h-full mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4">
+      {/* Píldora centrada — desktop */}
+      <nav
+        className="hidden md:flex relative items-center gap-1 rounded-full border border-white/10
+                   bg-slate-950/80 px-2 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl"
+      >
+        {/* Indicador deslizante */}
+        <span
+          className="absolute top-2 h-[calc(100%-1rem)] rounded-full bg-blue-400/15 border border-blue-400/30 transition-all duration-300 ease-out"
+          style={{ left: indicator.left, width: indicator.width, opacity: indicator.opacity }}
+        />
 
-        {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        {LINKS.map((link) => (
+          <a
+            key={link.id}
+            ref={(el) => (linkRefs.current[link.id] = el)}
+            href={`#${link.id}`}
+            onClick={() => handleClick(link.id)}
+            className={`relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+              active === link.id
+                ? "text-blue-300"
+                : "text-slate-400 hover:text-white"
+            }`}
           >
-            <path d="M12 7v14" /><path d="M16 12h2" /><path d="M16 8h2" />
-            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
-            <path d="M6 12h2" /><path d="M6 8h2" />
-          </svg>
-          <span className="text-lg font-semibold tracking-tight">Portfolio</span>
-        </a>
-
-        {/* Links — solo visibles en md+ */}
-        <div className="hidden md:flex items-center gap-6 text-sm text-slate-300">
-          <a href="#about" className="hover:text-white transition-colors">Sobre mí</a>
-          <a href="#projects" className="hover:text-white transition-colors">Proyectos</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contacto</a>
-        </div>
-
-        {/* Botón hamburguesa — solo visible en móvil */}
-        <button
-          className="md:hidden text-slate-300 hover:text-white transition-colors"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? (
-            // Icono X
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            // Icono hamburguesa
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
-        </button>
+            {link.label}
+          </a>
+        ))}
       </nav>
 
-      {/* Menú móvil desplegable */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-slate-800/70 bg-slate-950/95 backdrop-blur px-6 py-4 flex flex-col gap-4 text-sm text-slate-300">
-          <a href="#about" className="hover:text-white transition-colors" onClick={() => setMenuOpen(false)}>Sobre mí</a>
-          <a href="#projects" className="hover:text-white transition-colors" onClick={() => setMenuOpen(false)}>Proyectos</a>
-          <a href="#contact" className="hover:text-white transition-colors" onClick={() => setMenuOpen(false)}>Contacto</a>
+      {/* Versión móvil */}
+      <div className="md:hidden w-full max-w-sm">
+        <div className="flex items-center justify-between rounded-full border border-white/10 bg-slate-950/80 px-4 py-2.5 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl">
+          <span className="text-sm font-semibold text-blue-300">
+            {LINKS.find((l) => l.id === active)?.label}
+          </span>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            className="text-slate-300 hover:text-white transition-colors"
+          >
+            {menuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
         </div>
-      )}
+
+        {menuOpen && (
+          <div className="mt-2 flex flex-col gap-1 rounded-2xl border border-white/10 bg-slate-950/90 p-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl">
+            {LINKS.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => handleClick(link.id)}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  active === link.id
+                    ? "bg-blue-400/15 text-blue-300"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     </header>
   );
 };

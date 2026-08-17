@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Hero = () => {
+const Home = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 py-16 bg-linear-to-b from-slate-950 to-slate-900 text-white">
+    <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 py-16 bg-linear-to-b from-slate-950 to-slate-900 text-white">
       <div className="w-full max-w-3xl">
 
         {/* Tarjeta de perfil */}
@@ -62,4 +62,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Home;
