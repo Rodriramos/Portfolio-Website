@@ -53,8 +53,7 @@ const Navbar = () => {
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4">
       {/* Píldora centrada — desktop */}
       <nav
-        className="hidden md:flex relative items-center gap-1 rounded-full border border-white/10
-                   bg-slate-950/80 px-2 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl"
+        className="hidden md:flex relative items-center gap-1 rounded-full border border-white/10 bg-linear-to-r from-slate-950 to-slate-900 px-2 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl"
       >
         {/* Indicador deslizante */}
         <span
@@ -68,11 +67,10 @@ const Navbar = () => {
             ref={(el) => (linkRefs.current[link.id] = el)}
             href={`#${link.id}`}
             onClick={() => handleClick(link.id)}
-            className={`relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-              active === link.id
+            className={`relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${active === link.id
                 ? "text-blue-300"
                 : "text-slate-400 hover:text-white"
-            }`}
+              }`}
           >
             {link.label}
           </a>
@@ -114,11 +112,10 @@ const Navbar = () => {
                 key={link.id}
                 href={`#${link.id}`}
                 onClick={() => handleClick(link.id)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  active === link.id
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${active === link.id
                     ? "bg-blue-400/15 text-blue-300"
                     : "text-slate-400 hover:text-white"
-                }`}
+                  }`}
               >
                 {link.label}
               </a>
