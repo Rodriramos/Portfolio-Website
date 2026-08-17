@@ -29,7 +29,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-28 bg-slate-950 text-slate-200">
+    <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-10 bg-slate-950 text-slate-200">
       {/* Fondo sutil */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(99,102,241,0.08),rgba(255,255,255,0))]" />
@@ -43,29 +43,24 @@ const Experience = () => {
           {/* Header */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-3">
-
-                <BriefcaseBusiness
-                  className="relative w-8 h-8 text-blue-400"
-                  strokeWidth={1.8}
-                />
-              <div>
-
-
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
-                  Experiencia Profesional
-                </h2>
-              </div>
+              <BriefcaseBusiness
+                className="relative w-8 h-8 text-blue-400 shrink-0"
+                strokeWidth={1.8}
+              />
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+                Experiencia Profesional
+              </h2>
             </div>
           </div>
 
           {/* Timeline Container */}
-          <div className="relative pl-6 sm:pl-8 border-l border-slate-800/80 space-y-10">
+          <div className="relative pl-6 sm:pl-8 border-l border-slate-800/80 space-y-12">
 
             {experiences.map((exp, idx) => (
               <div key={idx} className="relative group">
 
                 {/* Timeline Indicator Dot */}
-                <div className="absolute left-7.75 sm:-left-9.75 top-1.5 flex items-center justify-center">
+                <div className="absolute -left-7.75 sm:-left-9.75 top-1.5 flex items-center justify-center">
                   {exp.current ? (
                     <span className="relative flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
@@ -76,25 +71,25 @@ const Experience = () => {
                   )}
                 </div>
 
-                {/* Card de Experiencia */}
-                <div className="p-6 sm:p-7 rounded-2xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-md transition-all duration-300 hover:border-slate-700 hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5">
+                {/* Contenido Libre (Sin Tarjeta/Caja) */}
+                <div className="transition-all duration-300">
 
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
                         {exp.role}
                       </h3>
-                      <p className="text-sm font-semibold text-blue-400 mt-0.5">
+                      <p className="text-sm sm:text-base font-semibold text-blue-400 mt-2">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="inline-block text-xs font-mono text-slate-400 bg-slate-800/60 border border-slate-700/50 px-3 py-1 rounded-full w-fit">
+                    <span className="inline-block text-xs font-mono text-slate-400 bg-slate-900/80 border border-slate-800 px-3 py-1 rounded-full w-fit">
                       {exp.period}
                     </span>
                   </div>
 
                   {/* Bullet Points */}
-                  <ul className="space-y-2 mb-5 text-sm sm:text-base text-slate-300/90 leading-relaxed">
+                  <ul className="space-y-2.5 text-sm sm:text-base text-slate-300/90 leading-relaxed">
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <span className="text-blue-400 mt-1.5 text-xs">▹</span>
