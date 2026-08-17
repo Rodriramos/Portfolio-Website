@@ -116,23 +116,6 @@ const Home = () => {
               Santa Cruz de Tenerife, España <span className="text-base leading-none">🇪🇸</span>
             </span>
           </div>
-
-          {/* Botones de acción */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
-            <a
-              href="#projects"
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-500 transition-all rounded-lg font-medium text-white shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] hover:-translate-y-0.5 active:translate-y-0"
-            >
-              Ver mis proyectos
-            </a>
-            <a
-              href="/Cv.pdf"
-              download="English CV Rodrigo Ramos Hernandez.pdf"
-              className="px-8 py-3 border border-slate-700 hover:border-slate-500 bg-slate-900/50 hover:bg-slate-800/60 backdrop-blur-sm transition-all rounded-lg font-medium text-slate-300 hover:text-white hover:-translate-y-0.5 active:translate-y-0"
-            >
-              Descargar CV
-            </a>
-          </div>
         </div>
 
         {/* Columna derecha: foto (Ocupa 5 columnas y se centra) */}
