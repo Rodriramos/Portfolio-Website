@@ -4,7 +4,7 @@ const LINKS = [
   { id: "home", label: "Inicio" },
   { id: "experience", label: "Experiencia" },
   { id: "projects", label: "Proyectos" },
-  { id: "contact", label: "Contacto" },
+  { id: "about", label: "Sobre mí" },
 ];
 
 const Navbar = () => {

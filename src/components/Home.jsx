@@ -16,7 +16,7 @@ const Home = () => {
         <div className="absolute top-1/3 -right-20 w-112.5 h-112.5 bg-indigo-500/20 rounded-full blur-[130px] pointer-events-none animate-blob-a" />
         <div className="absolute -bottom-20 -left-20 w-125 h-125 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none animate-blob-b" />
 
-        {/* Grid de ingenieria con degradado viñeta (Fade out en los bordes) */}
+        {/* Grid de ingeniería con degradado viñeta */}
         <div
           className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-size-4rem_4rem mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"
         />
@@ -63,10 +63,9 @@ const Home = () => {
       </div>
 
       {/* ---------- Contenido principal ---------- */}
-      {/* ---------- Contenido principal (Más agrupado) ---------- */}
       <div className="w-full max-w-6xl mx-auto grid md:grid-cols-12 items-center gap-8 md:gap-12 z-10">
 
-        {/* Columna izquierda: texto y CTA (Ocupa 7 columnas) */}
+        {/* Columna izquierda: texto y CTA */}
         <div className="md:col-span-7 text-center md:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-1 text-xs font-medium text-emerald-300 mb-6 backdrop-blur-md shadow-[0_0_15px_rgba(52,211,153,0.15)]">
             <span className="relative flex h-2 w-2">
@@ -95,9 +94,10 @@ const Home = () => {
             nuevas tecnologías y crear soluciones a problemas reales.
           </p>
 
-          {/* Ubicación actual */}
-          <div className="mt-6 flex items-center justify-center md:justify-start gap-2 text-sm text-slate-400">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800/80 text-slate-300 backdrop-blur-sm shadow-sm">
+          {/* Ubicación actual y Redes Sociales agrupados al lado */}
+          <div className="mt-6 flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm text-slate-400">
+            {/* Badge de Ubicación */}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800/80 text-slate-300 backdrop-blur-sm shadow-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -115,10 +115,32 @@ const Home = () => {
               </svg>
               Santa Cruz de Tenerife, España <span className="text-base leading-none">🇪🇸</span>
             </span>
+
+            {/* Enlace a LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/rodrigoramosh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800/80 text-slate-300 hover:text-white hover:border-slate-700 hover:bg-slate-800/80 transition-all backdrop-blur-sm shadow-sm"
+            >
+              <img src="/linkedin_logo.png" alt="LinkedIn" className="w-4 h-4 object-contain" />
+              <span>LinkedIn</span>
+            </a>
+
+            {/* Enlace a GitHub */}
+            <a
+              href="https://github.com/Rodriramos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800/80 text-slate-300 hover:text-white hover:border-slate-700 hover:bg-slate-800/80 transition-all backdrop-blur-sm shadow-sm"
+            >
+              <img src="/github_logo.png" alt="GitHub" className="w-4 h-4 object-contain" />
+              <span>GitHub</span>
+            </a>
           </div>
         </div>
 
-        {/* Columna derecha: foto (Ocupa 5 columnas y se centra) */}
+        {/* Columna derecha: foto */}
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
 
@@ -138,7 +160,7 @@ const Home = () => {
 
             {/* Foto de perfil */}
             <img
-              src="./profile.png"
+              src="public/Foto perfil.png"
               alt="Rodrigo Ramos Hernández"
               className="relative w-full h-full rounded-full object-cover border-4 border-slate-900 shadow-2xl"
             />

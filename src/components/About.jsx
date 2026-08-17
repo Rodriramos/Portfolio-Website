@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-const Contact = () => {
+const About = () => {
 	const formRef = useRef();
 	const [status, setStatus] = useState(null);
 
@@ -18,7 +18,7 @@ const Contact = () => {
 	};
 
 	return (
-		<section id="contact" className="mx-auto px-4 sm:px-6 py-10 sm:py-16 text-slate-200">
+		<section id="about" className="mx-auto px-4 sm:px-6 py-10 sm:py-16 text-slate-200">
 			<div className="rounded-2xl sm:rounded-3xl border border-slate-800 bg-slate-900 p-6 sm:p-8 md:p-12 max-w-6xl mx-auto">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
 
@@ -99,4 +99,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default About;

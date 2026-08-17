@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar"
 import Projects from "./components/Projects"
-import Contact from "./components/Contact"
+import About from "./components/About"
 import Footer from "./components/Footer"
 import Home from "./components/Home"
 import Experience from "./components/Experience"
@@ -16,9 +16,7 @@ function App() {
 
         <Experience />
         <Projects />
-        <div className="grow bg-slate-900">
-          <Contact />
-        </div>
+        <About />
         <Footer />
       </main>
 
