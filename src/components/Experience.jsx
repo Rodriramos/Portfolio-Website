@@ -1,36 +1,40 @@
 import React from 'react';
 import { BriefcaseBusiness } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const Experience = () => {
+  const { language } = useLanguage();
+  const t = translations[language].experience;
+
   const experiences = [
     {
-      role: 'Profesor Particular de Informática',
-      company: 'Autónomo · Remoto',
-      period: 'Junio 2023 - Presente',
+      role: t.jobTitle1.name,
+      company: t.jobTitle1.subtitle,
+      period: t.jobTitle1.date,
       current: true,
       description: [
-        'Imparto clases individuales a estudiantes universitarios de **Ingeniería Informática**.',
-        'Refuerzo fundamentos de **programación, algoritmos y estructuras de datos**.',
-        'Traduzco conceptos teóricos complejos en ejercicios prácticos y proyectos reales.'
+        t.jobTitle1.description1,
+        t.jobTitle1.description2,
+        t.jobTitle1.description3,
       ]
     },
     {
-      role: 'Prácticas como Desarrollador de Software',
-      company: 'TecAlliance',
-      period: 'Octubre 2025 - Diciembre 2025',
+      role: t.jobTitle2.name,
+      company: t.jobTitle2.subtitle,
+      period: t.jobTitle2.date,
       current: false,
       description: [
-        'Desarrollé una **aplicación Full-Stack para la gestión y alquiler de vehículos**, creando soluciones diferenciadas para usuarios y administradores.',
-        'Diseñé y desarrollé una **ETL** para extraer, transformar y almacenar datos de vehículos matriculados en España entre 2014 y 2024.',
-        'Desarrollé una **API REST** para centralizar el acceso a los datos y conectar los servicios backend con las aplicaciones frontend.',
-        'Implementé interfaces con React para la gestión administrativa y Angular para la aplicación orientada al usuario.'
+        t.jobTitle2.description1,
+        t.jobTitle2.description2,
+        t.jobTitle2.description3,
+        t.jobTitle2.description4,
       ]
     }
   ];
 
   return (
     <section id="experience" className="relative overflow-hidden px-4 sm:px-6 pt-10 sm:pt-16 pb-20 sm:pb-10 text-slate-200">
-
       <div className="max-w-6xl mx-auto">
         <div className="max-w-4xl">
 
@@ -42,14 +46,13 @@ const Experience = () => {
                 strokeWidth={1.8}
               />
               <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
-                Experiencia Profesional
+                {t.title}
               </h2>
             </div>
           </div>
 
           {/* Timeline Container */}
           <div className="relative pl-6 sm:pl-8 border-l border-slate-800/80 space-y-12">
-
             {experiences.map((exp, idx) => (
               <div key={idx} className="relative group">
 
@@ -65,9 +68,8 @@ const Experience = () => {
                   )}
                 </div>
 
-                {/* Contenido Libre (Sin Tarjeta/Caja) */}
+                {/* Contenido */}
                 <div className="transition-all duration-300">
-
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
                     <div>
                       <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
@@ -86,17 +88,15 @@ const Experience = () => {
                   <ul className="space-y-2.5 text-sm sm:text-base text-slate-300/90 leading-relaxed">
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-blue-400 mt-1.5 text-xs">▹</span>
-                        <span dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-medium">$1</strong>') }} />
+                        <span className="text-blue-400 mt-1.5 text-xs shrink-0">▹</span>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-
                 </div>
 
               </div>
             ))}
-
           </div>
 
         </div>

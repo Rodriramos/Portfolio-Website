@@ -1,7 +1,11 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const Footer = () => {
+  const { language } = useLanguage();
+  const t = translations[language].footer;
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -17,7 +21,7 @@ const Footer = () => {
         
         {/* Izquierda: Derechos reservados */}
         <p className="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
-          © {currentYear} Rodrigo Ramos Hernández. Todos los derechos reservados.
+          {t.text}
         </p>
 
         {/* Derecha: Botones integrados */}

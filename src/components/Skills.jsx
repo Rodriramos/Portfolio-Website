@@ -13,90 +13,94 @@ import {
   GitBranch,
   Container,
   Box,
-  Radio,
   CheckCircle2,
   Sparkles
 } from "lucide-react";
-
-const TECH_GROUPS = [
-  {
-    title: "Lenguajes de Programación",
-    subtitle: "Bases sólidas de lógica y desarrollo",
-    accent: "from-blue-500 to-cyan-400",
-    glow: "group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]",
-    borderHover: "group-hover:border-blue-500/50",
-    badgeHover: "hover:border-blue-400 hover:shadow-[0_0_12px_rgba(96,165,250,0.3)] hover:text-blue-200",
-    icon: Code2,
-    iconColor: "text-blue-400",
-    skills: [
-      { name: "Java", icon: Terminal },
-      { name: "TypeScript", icon: Code2 },
-      { name: "JavaScript", icon: Code2 },
-      { name: "Python", icon: Binary },
-      { name: "C++", icon: Cpu },
-      { name: "C", icon: Cpu },
-    ]
-  },
-  {
-    title: "Desarrollo Web & APIs",
-    subtitle: "Ecosistema Full-Stack y servicios REST",
-    accent: "from-cyan-400 to-emerald-400",
-    glow: "group-hover:shadow-[0_0_30px_rgba(45,212,191,0.2)]",
-    borderHover: "group-hover:border-cyan-500/50",
-    badgeHover: "hover:border-cyan-400 hover:shadow-[0_0_12px_rgba(45,212,191,0.3)] hover:text-cyan-200",
-    icon: Globe,
-    iconColor: "text-cyan-400",
-    skills: [
-      { name: "React", icon: Layers },
-      { name: "Angular", icon: Layers },
-      { name: "FastAPI", icon: Server },
-      { name: ".NET", icon: Server },
-      { name: "Spring Boot", icon: Server },
-      { name: "HTML", icon: Server },
-      { name: "CSS", icon: Server },
-      { name: "Tailwindcss", icon: Server },
-    ]
-  },
-  {
-    title: "Datos, Analytics & ETL",
-    subtitle: "Bases de datos SQL/NoSQL y procesado",
-    accent: "from-indigo-500 to-purple-500",
-    glow: "group-hover:shadow-[0_0_30px_rgba(129,140,248,0.2)]",
-    borderHover: "group-hover:border-indigo-500/50",
-    badgeHover: "hover:border-indigo-400 hover:shadow-[0_0_12px_rgba(129,140,248,0.3)] hover:text-indigo-200",
-    icon: Database,
-    iconColor: "text-indigo-400",
-    skills: [
-      { name: "PostgreSQL", icon: Database },
-      { name: "MySQL", icon: Database },
-      { name: "MongoDB", icon: Database },
-      { name: "Pandas", icon: BarChart3 },
-      { name: "NumPy", icon: Binary },
-      { name: "Power BI", icon: BarChart3 },
-      { name: "Procesos ETL", icon: Workflow },
-    ]
-  },
-  {
-    title: "DevOps & Herramientas",
-    subtitle: "Entorno de trabajo, contenedores y testing",
-    accent: "from-emerald-400 to-teal-400",
-    glow: "group-hover:shadow-[0_0_30px_rgba(52,211,153,0.2)]",
-    borderHover: "group-hover:border-emerald-500/50",
-    badgeHover: "hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.3)] hover:text-emerald-200",
-    icon: Container,
-    iconColor: "text-emerald-400",
-    skills: [
-      { name: "Git", icon: GitBranch },
-      { name: "Docker", icon: Container },
-      { name: "Linux", icon: Terminal },
-      { name: "Postman", icon: Box },
-      { name: "Swagger", icon: CheckCircle2 },
-      { name: "Visual Studio Code", icon: Code2 },
-    ]
-  }
-];
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const Skills = () => {
+  const { language } = useLanguage();
+  const t = translations[language].skills;
+
+  const TECH_GROUPS = [
+    {
+      title: t.programmingTitle,
+      subtitle: t.programmingDescription,
+      accent: "from-blue-500 to-cyan-400",
+      glow: "group-hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]",
+      borderHover: "group-hover:border-blue-500/50",
+      badgeHover: "hover:border-blue-400 hover:shadow-[0_0_12px_rgba(96,165,250,0.3)] hover:text-blue-200",
+      icon: Code2,
+      iconColor: "text-blue-400",
+      skills: [
+        { name: "Java", icon: Terminal },
+        { name: "TypeScript", icon: Code2 },
+        { name: "JavaScript", icon: Code2 },
+        { name: "Python", icon: Binary },
+        { name: "C++", icon: Cpu },
+        { name: "C", icon: Cpu },
+      ]
+    },
+    {
+      title: t.webTitle,
+      subtitle: t.webDescription,
+      accent: "from-cyan-400 to-emerald-400",
+      glow: "group-hover:shadow-[0_0_30px_rgba(45,212,191,0.2)]",
+      borderHover: "group-hover:border-cyan-500/50",
+      badgeHover: "hover:border-cyan-400 hover:shadow-[0_0_12px_rgba(45,212,191,0.3)] hover:text-cyan-200",
+      icon: Globe,
+      iconColor: "text-cyan-400",
+      skills: [
+        { name: "React", icon: Layers },
+        { name: "Angular", icon: Layers },
+        { name: "FastAPI", icon: Server },
+        { name: ".NET", icon: Server },
+        { name: "Spring Boot", icon: Server },
+        { name: "HTML", icon: Server },
+        { name: "CSS", icon: Server },
+        { name: "Tailwindcss", icon: Server },
+      ]
+    },
+    {
+      title: t.databaseTitle,
+      subtitle: t.databaseDescription,
+      accent: "from-indigo-500 to-purple-500",
+      glow: "group-hover:shadow-[0_0_30px_rgba(129,140,248,0.2)]",
+      borderHover: "group-hover:border-indigo-500/50",
+      badgeHover: "hover:border-indigo-400 hover:shadow-[0_0_12px_rgba(129,140,248,0.3)] hover:text-indigo-200",
+      icon: Database,
+      iconColor: "text-indigo-400",
+      skills: [
+        { name: "PostgreSQL", icon: Database },
+        { name: "MySQL", icon: Database },
+        { name: "MongoDB", icon: Database },
+        { name: "Pandas", icon: BarChart3 },
+        { name: "NumPy", icon: Binary },
+        { name: "Power BI", icon: BarChart3 },
+        { name: "Procesos ETL", icon: Workflow },
+      ]
+    },
+    {
+      title: t.devopsTitle,
+      subtitle: t.devopsDescription,
+      accent: "from-emerald-400 to-teal-400",
+      glow: "group-hover:shadow-[0_0_30px_rgba(52,211,153,0.2)]",
+      borderHover: "group-hover:border-emerald-500/50",
+      badgeHover: "hover:border-emerald-400 hover:shadow-[0_0_12px_rgba(52,211,153,0.3)] hover:text-emerald-200",
+      icon: Container,
+      iconColor: "text-emerald-400",
+      skills: [
+        { name: "Git", icon: GitBranch },
+        { name: "Docker", icon: Container },
+        { name: "Linux", icon: Terminal },
+        { name: "Postman", icon: Box },
+        { name: "Swagger", icon: CheckCircle2 },
+        { name: "Visual Studio Code", icon: Code2 },
+      ]
+    }
+  ];
+
   return (
     <section id="tech-stack" className="relative overflow-hidden py-16 text-slate-200">
 
@@ -108,9 +112,9 @@ const Skills = () => {
         {/* Encabezado */}
         <div className="flex flex-col items-start gap-2">
           <div className="flex items-center gap-3">
-          <Sparkles className="relative w-8 h-8 text-blue-400 shrink-0" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Habilidades Técnicas</h2>
-        </div>
+            <Sparkles className="relative w-8 h-8 text-blue-400 shrink-0" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">{t.title}</h2>
+          </div>
         </div>
 
         {/* Grid Principal de 2 Columnas */}
