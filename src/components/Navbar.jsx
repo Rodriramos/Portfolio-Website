@@ -146,7 +146,7 @@ const Navbar = () => {
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4 mt-2 md:mt-4">
       {/* Desktop Navigation Container */}
       <div className="hidden md:flex items-center">
-        <nav className="relative flex items-center gap-1 rounded-full border border-white/10 bg-linear-to-r from-slate-950 to-slate-900 px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl">
+        <nav className="relative flex items-center gap-1 rounded-full border border-white/10 bg-linear-to-r from-slate-950/60 to-slate-900/60 px-3 py-2 shadow-[0_8px_30px_rgb(0,0,0,0.5)] backdrop-blur-xl">
           {/* Indicador animado deslizante */}
           <span
             className="absolute top-2 h-[calc(100%-1rem)] rounded-full bg-blue-400/15 border border-blue-400/30 transition-all duration-300 ease-out pointer-events-none"

@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <section
       id="home"
-      className="relative flex items-center px-4 sm:px-6 pt-28 pb-10 text-white selection:bg-blue-500 selection:text-white"
+      className="relative flex items-center px-4 sm:px-6 pt-28 pb-10 mt-4 md:mt-20 text-white selection:bg-blue-500 selection:text-white"
     >
       <style>{`
         @keyframes floatChip {
@@ -23,7 +23,7 @@ const Home = () => {
         }
       `}</style>
 
-      <div className="w-full max-w-6xl mx-auto grid md:grid-cols-12 items-center gap-8 md:gap-12 z-10 mt-2 md:mt-10">
+      <div className="w-full max-w-6xl mx-auto grid md:grid-cols-12 items-center gap-8 md:gap-12 z-10">
 
         <div className="md:col-span-7 text-center md:text-left">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
